@@ -1,6 +1,8 @@
 const path = require('path')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 // 生成基础的webpack5配置
 module.exports = {
@@ -18,7 +20,20 @@ module.exports = {
             // 配置css，less加载器
             {
                 test: /\.(css|less)$/,
-                use: ['style-loader', 'css-loader', 'less-loader']
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            // postcss插件
+                            postcssOptions: {
+                                plugins: ['postcss-preset-env']
+                            }
+                        }
+                    },
+                    'less-loader'
+                ]
             },
             // 配置图片加载器, 小于20kb的图片转换成base64
             {
@@ -46,7 +61,11 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
+                    options: {
+                        // 预设
+                        presets: ['@babel/preset-env']
+                    }
                 }
             }
         ]
@@ -64,7 +83,13 @@ module.exports = {
             template: path.resolve(__dirname, '../public/index.html'),
             // 输出文件名
             filename: 'index.html'
-        })
+        }),
+        // 配置css提取插件
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].css'
+        }),
+        // 配置css压缩插件
+        new CssMinimizerPlugin()
     ],
     // 开发服务器配置
     devServer: {
@@ -72,8 +97,6 @@ module.exports = {
         host: '127.0.0.1',
         // 端口号
         port: 3000,
-        // 自动打开浏览器
-        open: true,
         // 开启HMR功能
         hot: true
     },
