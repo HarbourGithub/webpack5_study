@@ -9,7 +9,7 @@ module.exports = {
     // 出口配置
     output: {
         filename: 'js/bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, '../dist'),
         clean: true
     },
     // 加载器配置
@@ -56,27 +56,16 @@ module.exports = {
         // 配置eslint插件
         new ESLintPlugin({
             // eslint检查的文件
-            context: path.resolve(__dirname, 'src')
+            context: path.resolve(__dirname, '../src')
         }),
         // 配置html插件
         new HtmlWebpackPlugin({
             // 模板文件
-            template: path.resolve(__dirname, 'public/index.html'),
+            template: path.resolve(__dirname, '../public/index.html'),
             // 输出文件名
             filename: 'index.html'
         })
     ],
-    // 开发服务器配置
-    devServer: {
-        // 服务器启动域名
-        host: '127.0.0.1',
-        // 端口号
-        port: 3000,
-        // 自动打开浏览器
-        open: true,
-        // 开启HMR功能
-        hot: true
-    },
     // 开发模式
-    mode: 'development'
+    mode: 'production'
 }
