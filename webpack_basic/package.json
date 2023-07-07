@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.22.6",
+    "@babel/plugin-transform-runtime": "^7.22.7",
     "@babel/preset-env": "^7.22.6",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.8.1",
@@ -26,6 +27,7 @@
     "postcss-loader": "^7.3.3",
     "postcss-preset-env": "^9.0.0",
     "style-loader": "^3.3.3",
+    "thread-loader": "^4.0.2",
     "webpack": "^5.88.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
