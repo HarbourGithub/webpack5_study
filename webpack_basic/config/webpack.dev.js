@@ -65,12 +65,13 @@ module.exports = {
                         test: /\.(woff2?|eot|ttf|otf|map3|map4|avi)$/,
                         type: 'asset/resource',
                         generator: {
-                            filename: 'font/[hash:10][ext][query]'
+                            filename: 'media/[hash:10][ext][query]'
                         }
                     },
                     // 配置babel加载器
                     {
                         test: /\.js$/,
+                        // 排除node_modules目录下的文件
                         exclude: /node_modules/,
                         use: [
                             // 开启多进程打包，提升打包速度
@@ -137,7 +138,7 @@ module.exports = {
         // 服务器启动域名
         host: '127.0.0.1',
         // 端口号
-        port: 3000,
+        port: 3001,
         // 开启HMR功能, 作用是局部更新，不会刷新整个页面，提升开发效率，不会影响生产环境，
         // 只在开发环境使用，生产环境还是会刷新整个页面，重新加载所有资源，HMR只能处理非入口js文件的其他文件
         hot: true
