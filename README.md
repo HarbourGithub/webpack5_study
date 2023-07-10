@@ -1,1 +1,1 @@
-# webpack_study
+# webpack5_study
