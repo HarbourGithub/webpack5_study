@@ -193,7 +193,9 @@ module.exports = {
         splitChunks: {
             // 配置分割规则
             chunks: 'all'
-        }
+        },
+        // 配置将当前模块的记录其他模块的hash单独打包为一个文件
+        runtimeChunk: 'single'
     },
     // 模式
     mode: 'production'

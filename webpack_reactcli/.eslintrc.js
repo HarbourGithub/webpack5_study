@@ -1,6 +1,6 @@
 module.exports = {
-    // 继承eslint推荐的规则
-    extends: ['eslint:recommended'],
+    // 继承react推荐的规则
+    extends: ['plugin:react/recommended'],
     env: {
         browser: true,
         node: true,

@@ -159,7 +159,9 @@ module.exports = {
             // 开启缓存
             cache: true,
             // 开启多进程打包，设置进程数
-            threads: cpus - 1
+            threads: cpus - 1,
+            // 排除node_modules
+            exclude: 'node_modules'
         }),
         // 预加载插件
         new PreloadWebpackPlugin({
@@ -175,6 +177,16 @@ module.exports = {
         //     skipWaiting: true
         // })
     ],
+    // 优化配置
+    optimization: {
+        // 配置代码分割
+        splitChunks: {
+            // 配置分割规则
+            chunks: 'all'
+        },
+        // 配置将当前模块的记录其他模块的hash单独打包为一个文件
+        runtimeChunk: 'single'
+    },
     // 开发服务器配置
     devServer: {
         // 服务器根目录
