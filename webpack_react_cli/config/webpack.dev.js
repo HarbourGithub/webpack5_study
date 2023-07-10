@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const EslintWebpackPlugin = require('eslint-webpack-plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = {
     entry: './src/index.js',
@@ -10,6 +11,7 @@ module.exports = {
         filename: 'js/[name].js',
         chunkFilename: 'js/[name].chunk.js'
     },
+    cache: false, 
     module: {
         rules: [
             {
@@ -58,7 +60,9 @@ module.exports = {
                                 options: {
                                     presets: ['react-app'],
                                     cacheDirectory: true,
-                                    cacheCompression: false
+                                    cacheCompression: false,
+                                    // 激活js的HMR
+                                    plugins: ['react-refresh/babel']
                                 }
                             }
                         ]
@@ -74,7 +78,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../public/index.html'),
-            filename: 'index.html',
+            filename: 'index.html'
         }),
         new MiniCssExtractPlugin({
             filename: 'style/[name].css'
@@ -82,7 +86,8 @@ module.exports = {
         new EslintWebpackPlugin({
             context: path.resolve(__dirname, '../src'),
             cache: true
-        })
+        }),
+        new ReactRefreshWebpackPlugin()
     ],
     optimization: {
         splitChunks: {
@@ -101,8 +106,7 @@ module.exports = {
         compress: true,
         host: '0.0.0.0',
         port: 8000,
-        hot: true,
-        open: false
+        hot: true
     },
     devtool: 'eval-cheap-module-source-map',
     mode: 'development'
