@@ -59,7 +59,7 @@ module.exports = {
                                 loader: 'babel-loader',
                                 options: {
                                     presets: ['react-app'],
-                                    cacheDirectory: true,
+                                    cacheDirectory: false,
                                     cacheCompression: false,
                                     // 激活js的HMR
                                     plugins: ['react-refresh/babel']
@@ -85,7 +85,7 @@ module.exports = {
         }),
         new EslintWebpackPlugin({
             context: path.resolve(__dirname, '../src'),
-            cache: true
+            cache: false
         }),
         new ReactRefreshWebpackPlugin()
     ],

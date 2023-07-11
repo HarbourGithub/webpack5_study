@@ -3,13 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const EslintWebpackPlugin = require('eslint-webpack-plugin')
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin')
 
 module.exports = {
     entry: './src/index.js',
+    cache: false,
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: 'js/[name].js',
-        chunkFilename: 'js/[name].chunk.js',
+        filename: 'js/[name].[contenthash:10].js',
+        chunkFilename: 'js/[name].[contenthash:10].chunk.js',
         clean: true
     },
     module: {
@@ -50,14 +52,14 @@ module.exports = {
                 }
             },
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: [
                     {
                         loader: 'babel-loader',
                         options: {
                             presets: ['react-app'],
-                            cacheDirectory: true,
+                            cacheDirectory: false,
                             cacheCompression: false
                         }
                     }
@@ -75,11 +77,11 @@ module.exports = {
             filename: 'index.html',
         }),
         new MiniCssExtractPlugin({
-            filename: 'style/[name].css'
+            filename: 'style/[name].[contenthash:10].css'
         }),
         new EslintWebpackPlugin({
             context: path.resolve(__dirname, '../src'),
-            cache: true,
+            cache: false,
         })
     ],
     resolve: {
@@ -87,7 +89,8 @@ module.exports = {
     },
     optimization: {
         minimizer: [
-            new CssMinimizerWebpackPlugin()
+            new CssMinimizerWebpackPlugin(),
+            new TerserWebpackPlugin()
         ],
         splitChunks: {
             chunks: 'all'

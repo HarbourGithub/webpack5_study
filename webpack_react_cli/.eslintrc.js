@@ -1,6 +1,9 @@
 module.exports = {
     // 继承react推荐的规则
-    extends: ['plugin:react/recommended'],
+    extends: [
+        'plugin:react/recommended', 
+        'plugin:react-hooks/recommended'
+    ],
     env: {
         browser: true,
         node: true,
