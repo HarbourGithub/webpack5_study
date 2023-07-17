@@ -1,5 +1,5 @@
 import React from "react"
-import Demo01 from "./demo/demo01"
+import Demo01 from "@pages/demo/demo01"
 
 function App() {
   return (
