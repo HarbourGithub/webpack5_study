@@ -31,7 +31,7 @@ module.exports = {
     // 出口配置
     output: {
         // 输出路径
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(__dirname, '../build'),
         // 输出文件名
         filename: 'js/[name].js',
         // 非入口chunk的名称
