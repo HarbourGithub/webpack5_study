@@ -42,30 +42,32 @@ module.exports = {
         "jsx-a11y",
         "@typescript-eslint"
     ],
-    "settings": {
-        "import/resolver": {
-            "alias": {
-                "map": [
-                    ["@src", "./src"],
-                    ["@asset", "./src/asset"],
-                    ["@components", "./src/components"],
-                    ["@pages", "./src/pages"],
-                    ["@common", "./src/common"],
-                    ["@language", "./src/language"],
-                    ["@redux", "./src/redux"],
-                    ["@router", "./src/router"]
-                ]
-            }
-        }
-    },
-    "globals": {},
-    "overrides": [],
     "rules": {
+        // 缩进4个空格
+        "indent": ["error", 4],
+        // jsx缩进4个空格
+        "react/jsx-indent": ["error", 4],
+        // jsx属性缩进4个空格
+        "react/jsx-indent-props": ["error", 4],
         // 禁止使用分号
         "semi": ["error", "never"],
         // 只能使用单引号
         "quotes": ["error", "single"],
         // 忽略换行符类型
         "linebreak-style": "off",
-    }
+        // 可以在tsx文件中使用拓展名为jsx的文件
+        "react/jsx-filename-extension": "off",
+        // 禁止使用 @ts-ignore
+        "@typescript-eslint/ban-ts-ignore": "off",
+        // 忽略导入时的文件扩展名
+        "import/no-unresolved": "off",
+        // 关闭文件结尾必须有一行空行
+        "eol-last": "off",
+        // 忽略表达式必须单独一行
+        "react/jsx-one-expression-per-line": "off",
+        // 忽略button必须有类型
+        "react/button-has-type": "off"
+    },
+    "globals": {},
+    "overrides": [],
 }

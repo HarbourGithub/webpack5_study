@@ -10,7 +10,7 @@ const TerserWebpackPlugin = require('terser-webpack-plugin')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-const config = {
+module.exports = {
     mode: isProduction ? 'production' : 'development',
     cache: false,
     resolve: {
@@ -96,6 +96,8 @@ const config = {
                                         '@babel/preset-react',
                                         '@babel/preset-typescript'
                                     ],
+                                    cacheDirectory: true,
+                                    cacheCompression: false,
                                     plugins: [
                                         !isProduction && 'react-refresh/babel',
                                         '@babel/plugin-transform-runtime'
@@ -110,7 +112,8 @@ const config = {
     },
     plugins: [
         new EslintWebpackPlugin({
-            context: path.resolve(__dirname, '../src')
+            context: path.resolve(__dirname, '../src'),
+            cache: true
         }),
         new HtmlWebpackPlugin({
             template: './public/index.html',
@@ -182,5 +185,3 @@ const config = {
         maxAssetSize: 512000
     }
 }
-
-module.exports = config
