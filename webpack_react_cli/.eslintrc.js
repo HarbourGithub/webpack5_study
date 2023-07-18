@@ -40,10 +40,32 @@ module.exports = {
         "react",
         "react-hooks",
         "jsx-a11y",
-        "prettier",
         "@typescript-eslint"
     ],
+    "settings": {
+        "import/resolver": {
+            "alias": {
+                "map": [
+                    ["@src", "./src"],
+                    ["@asset", "./src/asset"],
+                    ["@components", "./src/components"],
+                    ["@pages", "./src/pages"],
+                    ["@common", "./src/common"],
+                    ["@language", "./src/language"],
+                    ["@redux", "./src/redux"],
+                    ["@router", "./src/router"]
+                ]
+            }
+        }
+    },
     "globals": {},
     "overrides": [],
-    "rules": {}
+    "rules": {
+        // 禁止使用分号
+        "semi": ["error", "never"],
+        // 只能使用单引号
+        "quotes": ["error", "single"],
+        // 忽略换行符类型
+        "linebreak-style": "off",
+    }
 }
