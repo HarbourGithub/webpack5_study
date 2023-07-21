@@ -15,7 +15,7 @@ module.exports = {
         "plugin:import/typescript",
         // 这个规则集合由 eslint-plugin-promise 提供，它提供了一些规则用于检查和约束 Promise 的使用
         "plugin:promise/recommended",
-        //  这个规则集合由 eslint-plugin-react 提供，它包含一些用于检查和约束 React 代码的规则
+        // 这个规则集合由 eslint-plugin-react 提供，它包含一些用于检查和约束 React 代码的规则
         "plugin:react/recommended",
         // 这个规则集合由 eslint-plugin-react-hooks 提供，它包含一些用于检查和约束 React Hooks 的规则
         "plugin:react-hooks/recommended",
@@ -61,12 +61,24 @@ module.exports = {
         "@typescript-eslint/ban-ts-ignore": "off",
         // 忽略导入时的文件扩展名
         "import/no-unresolved": "off",
-        // 关闭文件结尾必须有一行空行
+        // 忽略文件结尾必须有一行空行
         "eol-last": "off",
         // 忽略表达式必须单独一行
         "react/jsx-one-expression-per-line": "off",
         // 忽略button必须有类型
-        "react/button-has-type": "off"
+        "react/button-has-type": "off",
+        // 忽略对象最后一个属性必须有逗号
+        "comma-dangle": "off",
+        // 忽略行尾不能有空格
+        "no-trailing-spaces": "off",
+        // 忽略不能有console
+        "no-console": "off",
+        // 忽略代码块两边不能出现空行
+        "padded-blocks": "off",
+        // 忽略箭头函数周围出现了非预期的代码块语句
+        "arrow-body-style": "off",
+        // 忽略Promise的reject中必须传入Error对象
+        "prefer-promise-reject-errors": "off",
     },
     "globals": {},
     "overrides": [],

@@ -17,6 +17,7 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
         alias: {
             '@src': path.resolve(__dirname, '../src'),
+            '@app': path.resolve(__dirname, '../src/app'),
             '@assets': path.resolve(__dirname, '../src/assets'),
             '@components': path.resolve(__dirname, '../src/components'),
             '@pages': path.resolve(__dirname, '../src/pages'),
@@ -92,7 +93,14 @@ module.exports = {
                                 loader: 'babel-loader',
                                 options: {
                                     presets: [
-                                        '@babel/preset-env',
+                                        // 按需导入core-js
+                                        [
+                                            '@babel/preset-env',
+                                            {
+                                                useBuiltIns: 'usage',
+                                                corejs: 3
+                                            }
+                                        ],
                                         '@babel/preset-react',
                                         '@babel/preset-typescript'
                                     ],
@@ -100,7 +108,16 @@ module.exports = {
                                     cacheCompression: false,
                                     plugins: [
                                         !isProduction && 'react-refresh/babel',
-                                        '@babel/plugin-transform-runtime'
+                                        '@babel/plugin-transform-runtime',
+                                        // 按需导入antd
+                                        [
+                                            'import',
+                                            {
+                                                libraryName: 'antd',
+                                                libraryDirectory: 'es',
+                                                style: true
+                                            }
+                                        ]
                                     ].filter(Boolean)
                                 }
                             }

@@ -1,4 +1,5 @@
-import React, { memo, useState } from 'react'
+import React, { useState } from 'react'
+import { Button } from 'antd'
 import '@pages/demo/demo01.less'
 
 function Demo01() {
@@ -11,15 +12,12 @@ function Demo01() {
     const [count, setCount] = useState(0)
     return (
         <div>
-            <h1>Demo Number {count}</h1>
-            <button
-                className="add-button"
-                onClick={() => setCount(count + 1)}
-            >
+            <h1>Demo Number is {count}</h1>
+            <Button type="primary" onClick={() => setCount(count + 1)}>
                 Add
-            </button>
+            </Button>
         </div>
     )
 }
 
-export default memo(Demo01)
+export default Demo01
