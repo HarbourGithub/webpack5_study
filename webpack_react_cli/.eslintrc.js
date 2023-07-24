@@ -79,6 +79,8 @@ module.exports = {
         "arrow-body-style": "off",
         // 忽略Promise的reject中必须传入Error对象
         "prefer-promise-reject-errors": "off",
+        // 忽略no-else-return
+        "no-else-return": "off"
     },
     "globals": {},
     "overrides": [],

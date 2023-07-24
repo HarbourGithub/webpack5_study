@@ -1,21 +1,22 @@
-import React, { useState } from 'react'
-import { Button } from 'antd'
-import '@pages/demo/demo01.less'
+import React, { useState, useEffect, useCallback } from 'react'
 
 function Demo01() {
-    // 实现一个简单使用useState的组件
-    // 1. 引入useState
-    // 2. 使用useState
-    // 3. 返回一个数组，第一个元素是状态，第二个元素是修改状态的函数
-    // 4. 使用状态
-    // 5. 修改状态
+
     const [count, setCount] = useState(0)
+
+    const testFun = useCallback(() => {
+        console.log('testFun', count)
+    }, [count])
+
+    useEffect(() => {
+        console.log('useEffect is running')
+    }, [testFun])
+
     return (
         <div>
-            <h1>Demo Number is {count}</h1>
-            <Button type="primary" onClick={() => setCount(count + 1)}>
-                Add
-            </Button>
+            <p>This is Demo01 Page</p>
+            <button onClick={() => setCount(count + 1)}>AddCount</button>
+            <button onClick={() => testFun()}>testFun</button>
         </div>
     )
 }

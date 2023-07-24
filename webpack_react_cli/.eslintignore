@@ -2,3 +2,4 @@
 /node_moduls
 /config
 .eslintrc.js
+custom.d.ts
