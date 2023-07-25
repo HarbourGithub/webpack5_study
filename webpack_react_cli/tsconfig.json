@@ -13,6 +13,7 @@
         "esModuleInterop": true,
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
+        "allowImportingTsExtensions": true,
         "lib": [
             "es2022",
             "dom",

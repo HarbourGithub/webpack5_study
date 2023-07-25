@@ -44,7 +44,7 @@ module.exports = {
     ],
     "rules": {
         // 缩进4个空格
-        "indent": ["error", 4],
+        "indent": ["error", 4, { "SwitchCase": 1 }],
         // jsx缩进4个空格
         "react/jsx-indent": ["error", 4],
         // jsx属性缩进4个空格
@@ -61,6 +61,7 @@ module.exports = {
         "@typescript-eslint/ban-ts-ignore": "off",
         // 忽略导入时的文件扩展名
         "import/no-unresolved": "off",
+        "import/extensions": "off",
         // 忽略文件结尾必须有一行空行
         "eol-last": "off",
         // 忽略表达式必须单独一行
