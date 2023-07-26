@@ -1,48 +1,24 @@
-import React, { ChangeEvent, useState } from 'react'
-
-// 自定义 Hook：用于管理表单状态
-type FormState = {
-    [key: string]: string
-}
-
-const useFormState = (initialState: FormState) => {
-    const [state, setState] = useState(initialState)
-
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setState({
-            ...state,
-            [event.target.name]: event.target.value,
-        })
-    }
-
-    return {
-        state,
-        handleChange,
-    }
-}
+import React, { useState, useDeferredValue } from 'react'
+import List from './list'
 
 function Test() {
-    const { state, handleChange } = useFormState({
-        username: '',
-        password: '',
-    })
+    const [inputValue, setInputValue] = useState('')
+
+    const deferredValue = useDeferredValue(inputValue)
+
+    console.log('inputValue: ', inputValue)
+    console.log('deferredValue: ', deferredValue)
 
     return (
-        <form>
+        <div>
             <input
                 type="text"
-                name="username"
-                value={state.username}
-                onChange={handleChange}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder="Search..."
             />
-            <input
-                type="password"
-                name="password"
-                value={state.password}
-                onChange={handleChange}
-            />
-            <button type="submit">Submit</button>
-        </form>
+            <List inputValue={deferredValue} />
+        </div>
     )
 }
 

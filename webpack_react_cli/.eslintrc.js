@@ -81,7 +81,9 @@ module.exports = {
         // 忽略Promise的reject中必须传入Error对象
         "prefer-promise-reject-errors": "off",
         // 忽略no-else-return
-        "no-else-return": "off"
+        "no-else-return": "off",
+        // 忽略.then或.catch中return一个值
+        "promise/always-return": "off",
     },
     "globals": {},
     "overrides": [],
