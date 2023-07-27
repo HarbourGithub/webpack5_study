@@ -1,12 +1,15 @@
-import React, { useId, memo } from 'react'
+import React, { memo, useRef } from 'react'
+import Demo05 from './demo05'
 
 function Demo04() {
+    const demoRef = useRef(null)
 
-    const id = useId()
+    console.log('demoRef:', demoRef)
 
     return (
         <div>
-            <p>This is Demo04 Page Id {id}</p>
+            <p>This is Demo04 Page</p>
+            <Demo05 ref={demoRef} />
         </div>
     )
 }
