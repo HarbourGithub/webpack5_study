@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useAppContext } from '@src/app/appContext'
 
 function Demo01() {
@@ -14,4 +14,4 @@ function Demo01() {
     )
 }
 
-export default Demo01
+export default memo(Demo01)

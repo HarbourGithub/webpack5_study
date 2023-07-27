@@ -1,7 +1,8 @@
 import React from 'react'
-import Demo01 from '@pages/demo/demo01'
-import Demo02 from '@pages/demo/demo02'
-import Test from '@pages/test'
+// import Demo01 from '@pages/demo/demo01'
+// import Demo02 from '@pages/demo/demo02'
+// import Demo03 from '@pages/demo/demo03'
+import Demo04 from '@pages/demo/demo04'
 import AppContextProvider from './appContext'
 
 function App() {
@@ -10,9 +11,11 @@ function App() {
         <AppContextProvider>
             <div>
                 <h1>React App</h1>
-                <Demo01 />
-                <Demo02 />
-                <Test />
+                {/* <Demo01 /> */}
+                {/* <Demo02 /> */}
+                {/* <Demo03 /> */}
+                <Demo04 />
+                <Demo04 />
             </div>
         </AppContextProvider>
     )
