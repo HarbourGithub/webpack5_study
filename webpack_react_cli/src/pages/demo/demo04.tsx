@@ -1,15 +1,21 @@
 import React, { memo, useRef } from 'react'
-import Demo05 from './demo05'
+import Demo05, { RefType } from './demo05'
 
 function Demo04() {
-    const demoRef = useRef(null)
+    const demoRef = useRef<RefType>(null)
 
-    console.log('demoRef:', demoRef)
+    const handleSetName = () => {
+        if (demoRef.current) {
+            console.log('demoRef.current: ', demoRef.current)
+            demoRef.current.handleSetName('张三')
+        }
+    }
 
     return (
         <div>
             <p>This is Demo04 Page</p>
             <Demo05 ref={demoRef} />
+            <button type="button" onClick={handleSetName}>Set Name</button>
         </div>
     )
 }

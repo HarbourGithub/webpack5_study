@@ -4,6 +4,7 @@ import React from 'react'
 // import Demo03 from '@pages/demo/demo03'
 import Demo04 from '@pages/demo/demo04'
 import AppContextProvider from './appContext'
+import '@pages/demo/demo06'
 
 function App() {
 

@@ -5,7 +5,12 @@ import React, {
     useImperativeHandle
 } from 'react'
 
-function Demo05(props: Record<string, never>, ref) {
+export type RefType = {
+    handleSetName: (value: string) => void,
+    name: string
+}
+
+function Demo05<T>(props: T, ref: React.Ref<RefType>) {
     const [name, setName] = useState('')
 
     const handleSetName = (value: string) => {
