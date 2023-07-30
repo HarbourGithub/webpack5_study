@@ -6,7 +6,6 @@ function Demo04() {
 
     const handleSetName = () => {
         if (demoRef.current) {
-            console.log('demoRef.current: ', demoRef.current)
             demoRef.current.handleSetName('张三')
         }
     }
