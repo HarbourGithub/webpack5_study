@@ -7,7 +7,7 @@ function Demo06() {
 
     return (
         <div>
-            <p>This is Demo04 Page {count}</p>
+            <p>This is Demo06 Page {count}</p>
             <button type="button" onClick={() => { setCount(count + 1) }}>SetCount</button>
         </div>
     )

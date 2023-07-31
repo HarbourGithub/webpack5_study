@@ -8,7 +8,7 @@ class BlogCenter {
     }
 
     // 订阅者订阅博主
-    subscribe(subscriber, bloggerName) {
+    blogCenterSubscribe(subscriber, bloggerName) {
         if (!this.bloggerSubscribe[bloggerName]) {
             this.bloggerSubscribe[bloggerName] = []
         }
@@ -18,9 +18,23 @@ class BlogCenter {
     }
 
     // 订阅者取消订阅博主
-    unsubscribe(subscriber, bloggerName) {
-        if (this.bloggerSubscribe[bloggerName]) {
+    blogCenterUnsubscribe(subscriber, bloggerName) {
+        if (this.bloggerSubscribe[bloggerName] && this.bloggerSubscribe[bloggerName].length > 0) {
             this.bloggerSubscribe[bloggerName] = this.bloggerSubscribe[bloggerName].filter(item => item !== subscriber)
+        }
+        if (this.bloggerSubscribe[bloggerName] && this.bloggerSubscribe[bloggerName].length === 0) {
+            delete this.bloggerSubscribe[bloggerName]
+        }
+    }
+
+    // 博主发布博客
+    blogCenterPublishBlog(bloggerName, blog) {
+        if (this.bloggerSubscribe[bloggerName] && this.bloggerSubscribe[bloggerName].length > 0) {
+            this.bloggerSubscribe[bloggerName].forEach(subscriber => {
+                subscriber.update(blog)
+            })
+        } else {
+            console.log(`no subscriber for blogger: ${bloggerName}`)
         }
     }
 }
@@ -32,14 +46,8 @@ class Blogger {
     }
 
     // 博主发布博客
-    publishBlog(bloggerSubscribe, blog) {
-        if (bloggerSubscribe[this.name] && bloggerSubscribe[this.name].length > 0) {
-            bloggerSubscribe[this.name].forEach(subscriber => {
-                subscriber.update(blog)
-            })
-        } else {
-            console.log(`no subscriber for blogger: ${this.name}`)
-        }
+    publishBlog(blogCenter, blog) {
+        blogCenter.blogCenterPublishBlog(this.name, blog)
     }
 }
 
@@ -47,6 +55,16 @@ class Blogger {
 class Subscriber {
     constructor(name) {
         this.name = name
+    }
+
+    // 订阅者订阅博主
+    subscribe(blogCenter, bloggerName) {
+        blogCenter.blogCenterSubscribe(this, bloggerName)
+    }
+
+    // 订阅者取消订阅博主
+    unsubscribe(blogCenter, bloggerName) {
+        blogCenter.blogCenterUnsubscribe(this, bloggerName)
     }
 
     // 订阅者接收博客
@@ -65,14 +83,14 @@ const subscriber1 = new Subscriber('subscriber1')
 const subscriber2 = new Subscriber('subscriber2')
 const subscriber3 = new Subscriber('subscriber3')
 // 订阅者订阅博主
-blogCenter.subscribe(subscriber1, blogger1.name)
-blogCenter.subscribe(subscriber1, blogger1.name)
-blogCenter.subscribe(subscriber3, blogger2.name)
+subscriber1.subscribe(blogCenter, blogger1.name)
+subscriber2.subscribe(blogCenter, blogger1.name)
+subscriber3.subscribe(blogCenter, blogger2.name)
 // 博主发布博客
-blogger1.publishBlog(blogCenter.bloggerSubscribe, 'hello world')
-blogger2.publishBlog(blogCenter.bloggerSubscribe, 'hello world again')
+blogger1.publishBlog(blogCenter, 'hello world')
+blogger2.publishBlog(blogCenter, 'hello world again')
 // 订阅者取消订阅博主
-blogCenter.unsubscribe(subscriber1, blogger1.name)
+subscriber1.unsubscribe(blogCenter, blogger1.name)
 // 博主再次发布博客
-blogger1.publishBlog(blogCenter.bloggerSubscribe, 'hello world again and again')
-blogger2.publishBlog(blogCenter.bloggerSubscribe, 'hello world again and again and again')
+blogger1.publishBlog(blogCenter, 'hello world again again')
+blogger2.publishBlog(blogCenter, 'hello world again again again')

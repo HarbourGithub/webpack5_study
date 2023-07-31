@@ -85,6 +85,7 @@ module.exports = {
         // 忽略.then或.catch中return一个值
         "promise/always-return": "off",
         "max-classes-per-file": "off",
+        "max-len": 120,
     },
     "globals": {},
     "overrides": [],

@@ -6,7 +6,6 @@ let subscribers: Subscriber[] = []
 
 const setCount = (newCount: number) => {
     count = newCount
-    console.log('subscribers', subscribers)
     subscribers.forEach((item) => {
         item()
     })
