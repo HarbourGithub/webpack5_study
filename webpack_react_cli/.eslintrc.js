@@ -84,8 +84,20 @@ module.exports = {
         "no-else-return": "off",
         // 忽略.then或.catch中return一个值
         "promise/always-return": "off",
-        "max-classes-per-file": "off",
-        "max-len": 120,
+        // 设置单行最大长度
+        "max-len": [
+            "error",
+            {
+                "code": 120, // 设置每行代码的最大长度为 120 个字符，可以根据需要调整此值
+                "tabWidth": 4, // 如果使用缩进，请指定缩进的字符数，比如 2 或 4
+                "ignoreComments": false, // 是否忽略注释，默认为 false，即注释也会计算在每行代码长度内
+                "ignoreTrailingComments": false, // 是否忽略行尾注释，默认为 false
+                "ignoreUrls": true, // 是否忽略 URL 地址，默认为 true，即 URL 不计入每行代码长度内
+                "ignoreStrings": true, // 是否忽略字符串，默认为 true，即字符串不计入每行代码长度内
+                "ignoreTemplateLiterals": true, // 是否忽略模板字面量，默认为 true，即模板字面量不计入每行代码长度内
+                "ignoreRegExpLiterals": true, // 是否忽略正则表达式，默认为 true，即正则表达式不计入每行代码长度内
+            },
+        ]
     },
     "globals": {},
     "overrides": [],

@@ -55,10 +55,13 @@
         "webpackbar": "^5.0.2"
     },
     "dependencies": {
+        "@reduxjs/toolkit": "^1.9.5",
         "antd": "^5.7.1",
         "core-js": "^3.31.1",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "react-redux": "^8.1.2",
+        "redux-thunk": "^2.4.2"
     },
     "browserslist": [
         "> 1%",
