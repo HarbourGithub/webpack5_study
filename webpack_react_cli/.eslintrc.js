@@ -97,7 +97,9 @@ module.exports = {
                 "ignoreTemplateLiterals": true, // 是否忽略模板字面量，默认为 true，即模板字面量不计入每行代码长度内
                 "ignoreRegExpLiterals": true, // 是否忽略正则表达式，默认为 true，即正则表达式不计入每行代码长度内
             },
-        ]
+        ],
+        // 忽略默认参数在前
+        "default-param-last": "off"
     },
     "globals": {},
     "overrides": [],
