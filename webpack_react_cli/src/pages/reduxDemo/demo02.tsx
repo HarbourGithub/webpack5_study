@@ -1,21 +1,21 @@
 import React from 'react'
 import { useSelector, shallowEqual } from 'react-redux'
+import { StateType } from '@redux/stateType'
+
+type StoreSelector = {
+    counter: number
+}
 
 function Demo02() {
-    const { count, userInfo } = useSelector(
-        (state: any) => ({
-            count: state.counter.count,
-            userInfo: state.userInfo
-        }),
-        shallowEqual
-    )
+    const storeSelector = (state: StateType) => ({
+        counter: state.counter
+    }) as StoreSelector
+
+    const { counter } = useSelector(storeSelector, shallowEqual) as StoreSelector
 
     return (
         <div style={{ backgroundColor: 'yellow' }}>
-            <h1>This is Demo02</h1>
-            <h2>Count: {count}</h2>
-            <h2>UserName: {userInfo.userName}</h2>
-            <h2>UserAge: {userInfo.userAge}</h2>
+            <h1>This is Demo02 Counter: {counter}</h1>
         </div>
     )
 }

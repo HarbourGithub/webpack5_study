@@ -1,5 +1,9 @@
+import { Dispatch } from 'redux'
+// 定义state类型
+type CounterType = number
+
 // 定义action类型
-type ActionType = {
+type CounterActionType = {
     type: string,
     payload: number
 }
@@ -12,12 +16,16 @@ const decrementCount = 'DECREMENT_COUNT'
 const incrementCountAction = (payload: number) => {
     return { type: incrementCount, payload }
 }
-const decrementCountAction = (payload: number) => {
-    return { type: decrementCount, payload }
+const decrementCountAction = (payload: number): any => {
+    return (dispatch: Dispatch) => {
+        setTimeout(() => {
+            dispatch({ type: decrementCount, payload })
+        }, 1000)
+    }
 }
 
 // 定义reducer
-const countReducer = (state = 0, action: ActionType) => {
+const countReducer = (state = 0, action: CounterActionType) => {
     const { type, payload } = action
     switch (type) {
         case incrementCount:
@@ -29,4 +37,9 @@ const countReducer = (state = 0, action: ActionType) => {
     }
 }
 
-export { incrementCountAction, decrementCountAction, countReducer }
+export {
+    incrementCountAction,
+    decrementCountAction,
+    countReducer,
+    CounterType
+}

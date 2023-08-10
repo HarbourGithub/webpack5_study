@@ -99,7 +99,13 @@ module.exports = {
             },
         ],
         // 忽略默认参数在前
-        "default-param-last": "off"
+        "default-param-last": "off",
+        // 忽略ts不能使用any
+        "@typescript-eslint/no-explicit-any": "off",
+        // 忽略ts不能返回any
+        "@typescript-eslint/no-unsafe-return": "off",
+        // 忽略不能修改函数参数
+        "no-param-reassign": "off",
     },
     "globals": {},
     "overrides": [],

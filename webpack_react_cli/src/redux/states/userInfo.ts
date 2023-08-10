@@ -1,5 +1,11 @@
+// 定义state类型
+type UserInfoType = {
+    name: string,
+    age: number
+}
+
 // 定义action类型
-type ActionType = {
+type UserInfoActionType = {
     type: string,
     payload: string | number
 }
@@ -15,8 +21,9 @@ const changeUserNameAction = (payload: string | number) => {
 const changeUserAgeAction = (payload: string | number) => {
     return { type: changeUserAge, payload }
 }
+
 // 定义reducer
-const userInfoReducer = (state = { name: 'jack', age: 18 }, action: ActionType) => {
+const userInfoReducer = (state = { name: 'jack', age: 18 }, action: UserInfoActionType) => {
     const { type, payload } = action
     switch (type) {
         case changeUserName:
@@ -28,4 +35,9 @@ const userInfoReducer = (state = { name: 'jack', age: 18 }, action: ActionType) 
     }
 }
 
-export { changeUserNameAction, changeUserAgeAction, userInfoReducer }
+export {
+    changeUserNameAction,
+    changeUserAgeAction,
+    userInfoReducer,
+    UserInfoType
+}
