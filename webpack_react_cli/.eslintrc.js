@@ -106,6 +106,9 @@ module.exports = {
         "@typescript-eslint/no-unsafe-return": "off",
         // 忽略不能修改函数参数
         "no-param-reassign": "off",
+        // 忽略必须使用驼峰命名
+        "camelcase": "off",
+        "@typescript-eslint/unbound-method": "off",
     },
     "globals": {},
     "overrides": [],

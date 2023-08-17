@@ -27,7 +27,7 @@ const counterSlice = createSlice({
 
 // 取出action creator
 const { incrementCountAction, decrementCountAction } = counterSlice.actions
-// 取出reducers
+// 取出reducer
 const countReducer = counterSlice.reducer
 
 export {

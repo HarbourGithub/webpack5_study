@@ -31,7 +31,8 @@ module.exports = {
         path: isProduction ? path.resolve(__dirname, '../build') : undefined,
         filename: 'js/[name].[contenthash:8].js',
         chunkFilename: 'js/[name].[contenthash:8].chunk.js',
-        clean: true
+        clean: true,
+        publicPath: isProduction ? '' : '/'
     },
     module: {
         rules: [

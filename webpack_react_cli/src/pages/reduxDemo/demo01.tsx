@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { incrementCountAction, decrementCountAction } from '@src/redux/states/counter'
-import { changeUserNameAction, changeUserAgeAction } from '@src/redux/states/userInfo'
+import { incrementCountAction, decrementCountAction } from '@src/reduxToolkit/states/counter'
+import { changeUserNameAction, changeUserAgeAction } from '@src/reduxToolkit/states/userInfo'
 
 function Demo01() {
     const dispatch = useDispatch()

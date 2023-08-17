@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, shallowEqual } from 'react-redux'
-import { StateType } from '@redux/stateType'
+import { StateType } from '@src/reduxToolkit/stateType'
 
 type StoreSelector = {
     counter: number
