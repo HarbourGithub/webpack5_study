@@ -1,5 +1,5 @@
 import React from 'react'
-import Router from '@src/router/index01'
+import Router from '@src/router/index'
 
 function RouterApp() {
 

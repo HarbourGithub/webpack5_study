@@ -88,7 +88,7 @@ module.exports = {
         "max-len": [
             "error",
             {
-                "code": 120, // 设置每行代码的最大长度为 120 个字符，可以根据需要调整此值
+                "code": 150, // 设置每行代码的最大长度为 120 个字符，可以根据需要调整此值
                 "tabWidth": 4, // 如果使用缩进，请指定缩进的字符数，比如 2 或 4
                 "ignoreComments": false, // 是否忽略注释，默认为 false，即注释也会计算在每行代码长度内
                 "ignoreTrailingComments": false, // 是否忽略行尾注释，默认为 false

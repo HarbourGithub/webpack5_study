@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "baseUrl": "./",
-        "module": "ES2015",
-        "target": "ES2015",
+        "module": "ES2022",
+        "target": "ES2022",
         "allowJs": true,
         "removeComments": false,
         "noImplicitAny": false,
